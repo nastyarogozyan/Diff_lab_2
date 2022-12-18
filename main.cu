@@ -17,6 +17,7 @@ const double g = 9.8;
 double Ax = -0.353, Bx = 0.353, Ay = 0.3, By = Ay, C = 3 * PI / 8;
  
 struct Diff_questions {
+
   double Ax;
   double Bx;
   double Ay;
@@ -25,6 +26,7 @@ struct Diff_questions {
   double Pi;
   double Delta;
   double Eps;
+
 } typedef Diff ;
  
 __device__ double Cal_dist(double* x0, double* x1, size_t n) {
@@ -97,6 +99,7 @@ __host__ void print_result(double* x) {
 }
  
 int main() {
+
   Diff* diff;
   const int Questions = 5;
   double *x0, *x1;
@@ -120,8 +123,11 @@ int main() {
     Vs += (p * (x1[1] - x1[0]) - m * g) * delta_r/ m;
     diff->Ay += Vs * delta_r;
     diff->By = diff->Ay;
+
   }
+
   cudaFree(&x0);
   cudaFree(&x1);
   return 0;
+
 }
